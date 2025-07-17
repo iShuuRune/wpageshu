@@ -55,7 +55,7 @@ const teamMembers = [
         >
           <div class="h-64 overflow-hidden">
             <img 
-              :src="`/src/assets/${member.image}`"
+              :src="`/${member.image}`"
               :alt="member.name"
               class="w-full h-full object-cover object-top"
               style="object-position: center 15%;"

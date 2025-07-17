@@ -2,38 +2,38 @@
 const teamMembers = [
   {
     name: 'Cristian',
-    position: 'Pastor Principal',
-    description: 'Con más de 15 años de experiencia en el ministerio, Cristian lidera nuestra iglesia con pasión y dedicación.',
+    position: 'Bajo',
+    description: 'Con su sólida base musical y años de experiencia, Cristian aporta el ritmo fundamental que sostiene toda la banda con su bajo.',
     image: 'shu_cris.jpg'
   },
   {
     name: 'Arlyn',
-    position: 'Directora de Ministerios',
-    description: 'Arlyn coordina todos nuestros ministerios y programas comunitarios con gran amor y eficiencia.',
+    position: 'Coro y Líder de la Banda',
+    description: 'Arlyn combina su hermosa voz en el coro con su liderazgo excepcional, coordinando y dirigiendo a toda la banda durante los ensayos y presentaciones.',
     image: 'shu_arlyn.jpg'
   },
   {
     name: 'Josa',
-    position: 'Pastor de Jóvenes',
-    description: 'Josa trabaja incansablemente con los jóvenes, inspirándolos a crecer en su fe y propósito.',
+    position: 'Batería',
+    description: 'Josa mantiene el corazón rítmico de la banda, proporcionando la energía y el tempo que impulsa cada canción con su pasión por la batería.',
     image: 'shu_josa.jpg'
   },
   {
     name: 'Toto',
-    position: 'Coordinador de Alabanza',
-    description: 'Toto dirige nuestro equipo de alabanza, creando momentos de adoración transformadores.',
+    position: 'Guitarra Eléctrica y Líder de la Banda',
+    description: 'Toto lidera la banda con su guitarra eléctrica, creando melodías poderosas y dirigiendo musicalmente cada momento de adoración con carisma y talento.',
     image: 'shu_toto.jpg'
   },
   {
     name: 'Kelly',
-    position: 'Coordinadora de Eventos',
-    description: 'Kelly organiza y coordina todos nuestros eventos especiales y actividades comunitarias.',
+    position: 'Teclado y Voz',
+    description: 'Kelly enriquece cada canción con sus melodías al teclado y su voz angelical, aportando armonías y texturas musicales que elevan la adoración.',
     image: 'shu_kelly.jpg'
   },
   {
     name: 'Isra',
-    position: 'Director de Comunicaciones',
-    description: 'Isra se encarga de mantener a nuestra comunidad conectada e informada a través de diversos medios.',
+    position: 'Guitarra Acústica',
+    description: 'Isra toca la guitarra acústica con una sensibilidad especial, creando atmósferas íntimas y acompañamientos perfectos que complementan cada momento musical.',
     image: 'shu_isra.jpg'
   }
 ]

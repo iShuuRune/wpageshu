@@ -4,58 +4,60 @@ import { ref } from 'vue'
 const events = ref([
   {
     id: 1,
-    title: 'Servicio Dominical',
-    date: '2025-07-20',
-    time: '10:00 AM',
-    location: 'Campus Principal',
-    description: 'Únete a nosotros para un tiempo de adoración, enseñanza y comunión. Experimenta la presencia de Dios en un ambiente de adoración vibrante.',
-    type: 'Servicio Regular',
+    title: 'Aniversario Red Conexión',
+    date: '2025-07-26',
+    time: '7:00 PM',
+    location: 'Iglesia PDP Sede Pueblo Viejo',
+    description: 'Celebramos un año más de la Red Conexión con una noche especial. Únete a nosotros para conmemorar este momento tan importante.',
+    type: 'Aniversario',
     featured: true
   },
   {
     id: 2,
-    title: 'Noche de Jóvenes',
-    date: '2025-07-23',
-    time: '7:00 PM',
-    location: 'Salón de Jóvenes',
-    description: 'Una noche especial dedicada a los jóvenes de nuestra comunidad con música, enseñanza y actividades.',
-    type: 'Jóvenes',
-    featured: false
+    title: 'Concierto René González',
+    date: '2025-08-27',
+    time: '6:30 PM',
+    location: 'Sala Magna del Liceo de Santa Cruz',
+    description: 'Una noche inolvidable con René González, uno de los exponentes más reconocidos de la música cristiana. Prepárate para una experiencia de adoración única.',
+    type: 'Concierto',
+    featured: true
   },
   {
     id: 3,
-    title: 'Estudio Bíblico',
-    date: '2025-07-25',
-    time: '7:30 PM',
-    location: 'Aula 201',
-    description: 'Profundiza en la Palabra de Dios con nuestro estudio bíblico semanal. Todos los niveles son bienvenidos.',
-    type: 'Estudio',
+    title: 'Congreso de Música',
+    date: '2025-11-15',
+    time: '10:00 AM',
+    location: 'Iglesia Central PDP San Joaquín',
+    description: 'Un encuentro especial dedicado a la música cristiana con talleres, conferencias y momentos de adoración. Ideal para músicos y amantes de la música.',
+    type: 'Congreso',
     featured: false
   },
   {
     id: 4,
-    title: 'Conferencia Anual',
-    date: '2025-08-15',
-    time: '6:00 PM',
-    location: 'Auditorio Central',
-    description: 'Nuestra conferencia anual con invitados especiales, talleres y momentos de adoración profunda.',
-    type: 'Conferencia',
+    title: 'Concierto Alex Zurdo',
+    date: '2025-12-07',
+    time: '3:00 PM',
+    location: 'Polideportivo de Nicoya',
+    description: 'Alex Zurdo llega a Costa Rica con su música llena de energía y mensaje. Una tarde que no te puedes perder con uno de los artistas más queridos del género urbano cristiano.',
+    type: 'Concierto',
     featured: true
   },
   {
     id: 5,
-    title: 'Retiro de Familias',
-    date: '2025-08-22',
-    time: '9:00 AM',
-    location: 'Centro de Retiros',
-    description: 'Un fin de semana especial para fortalecer los vínculos familiares y crecer juntos en la fe.',
-    type: 'Retiro',
-    featured: true
+    title: 'Campamento Zonal Río Naranjo 2025',
+    date: '2025-12-19',
+    time: '5:00 PM',
+    location: 'Río Naranjo de Upala',
+    description: 'Tres días de campamento zonal del 19 al 21 de diciembre. Salida viernes 5:00 PM, regreso domingo 6:00 PM. Una experiencia de crecimiento espiritual en la naturaleza.',
+    type: 'Campamento',
+    featured: false
   }
 ])
 
 const formatDate = (dateString: string) => {
-  return new Date(dateString).toLocaleDateString('es-ES', {
+  // Crear la fecha agregando 'T00:00:00' para forzar zona horaria local
+  const date = new Date(dateString + 'T00:00:00')
+  return date.toLocaleDateString('es-ES', {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
@@ -63,13 +65,17 @@ const formatDate = (dateString: string) => {
   })
 }
 
+const getDateForDisplay = (dateString: string) => {
+  // Función auxiliar para obtener la fecha correcta en zona horaria local
+  return new Date(dateString + 'T00:00:00')
+}
+
 const getEventTypeColor = (type: string) => {
   const colors = {
-    'Servicio Regular': 'bg-blue-500',
-    'Jóvenes': 'bg-purple-500',
-    'Estudio': 'bg-green-500',
-    'Conferencia': 'bg-red-500',
-    'Retiro': 'bg-yellow-500'
+    'Aniversario': 'bg-purple-500',
+    'Concierto': 'bg-red-500',
+    'Congreso': 'bg-blue-500',
+    'Campamento': 'bg-green-500'
   }
   return colors[type as keyof typeof colors] || 'bg-gray-500'
 }
@@ -100,8 +106,8 @@ const getEventTypeColor = (type: string) => {
         >
           <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center relative">
             <div class="text-white text-center">
-              <div class="text-4xl font-bold mb-2">{{ new Date(event.date).getDate() }}</div>
-              <div class="text-lg">{{ new Date(event.date).toLocaleDateString('es-ES', { month: 'long' }) }}</div>
+              <div class="text-4xl font-bold mb-2">{{ getDateForDisplay(event.date).getDate() }}</div>
+              <div class="text-lg">{{ getDateForDisplay(event.date).toLocaleDateString('es-ES', { month: 'long' }) }}</div>
             </div>
             <span :class="`absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-medium text-white ${getEventTypeColor(event.type)}`">
               {{ event.type }}
@@ -155,8 +161,8 @@ const getEventTypeColor = (type: string) => {
         >
           <div class="h-32 bg-gradient-to-r from-gray-400 to-gray-600 flex items-center justify-center relative">
             <div class="text-white text-center">
-              <div class="text-2xl font-bold">{{ new Date(event.date).getDate() }}</div>
-              <div class="text-sm">{{ new Date(event.date).toLocaleDateString('es-ES', { month: 'short' }) }}</div>
+              <div class="text-2xl font-bold">{{ getDateForDisplay(event.date).getDate() }}</div>
+              <div class="text-sm">{{ getDateForDisplay(event.date).toLocaleDateString('es-ES', { month: 'short' }) }}</div>
             </div>
             <span :class="`absolute top-2 right-2 px-2 py-1 rounded-full text-xs font-medium text-white ${getEventTypeColor(event.type)}`">
               {{ event.type }}

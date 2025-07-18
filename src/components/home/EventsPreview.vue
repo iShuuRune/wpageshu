@@ -4,29 +4,29 @@ import { RouterLink } from 'vue-router'
 const upcomingEvents = [
   {
     id: 1,
-    title: 'Servicio Dominical',
-    date: '2025-07-20',
-    time: '10:00 AM',
-    location: 'Campus Principal',
-    description: 'Únete a nosotros para un tiempo de adoración y enseñanza.',
+    title: 'Aniversario Red Conexión',
+    date: '2025-07-26',
+    time: '7:00 PM',
+    location: 'Iglesia PDP Sede Pueblo Viejo',
+    description: 'Celebramos un año más de la Red Conexión con una noche especial. Únete a nosotros para conmemorar este momento tan importante.',
     image: '/api/placeholder/400/250'
   },
   {
     id: 2,
-    title: 'Noche de Jóvenes',
-    date: '2025-07-23',
-    time: '7:00 PM',
-    location: 'Salón de Jóvenes',
-    description: 'Una noche especial dedicada a los jóvenes de nuestra comunidad.',
+    title: 'Concierto René González',
+    date: '2025-08-27',
+    time: '6:30 PM',
+    location: 'Sala Magna del Liceo de Santa Cruz',
+    description: 'Una noche inolvidable con René González, uno de los exponentes más reconocidos de la música cristiana. Prepárate para una experiencia de adoración única.',
     image: '/api/placeholder/400/250'
   },
   {
     id: 3,
-    title: 'Conferencia Anual',
-    date: '2025-08-15',
-    time: '6:00 PM',
-    location: 'Auditorio Central',
-    description: 'Nuestra conferencia anual con invitados especiales.',
+    title: 'Congreso de Música',
+    date: '2025-11-15',
+    time: '10:00 AM',
+    location: 'Iglesia Central PDP San Joaquín',
+    description: 'Un encuentro especial dedicado a la música cristiana con talleres, conferencias y momentos de adoración. Ideal para músicos y amantes de la música.',
     image: '/api/placeholder/400/250'
   }
 ]

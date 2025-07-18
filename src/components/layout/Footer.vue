@@ -91,19 +91,19 @@ const quickLinks = [
           <div class="space-y-2 text-gray-300">
             <p>
               <span class="block">Email:</span>
-              <a href="mailto:info@shu.com" class="hover:text-white transition-colors duration-200">
-                info@shu.com
+              <a href="mailto:solohayunocr@gmail.com" class="hover:text-white transition-colors duration-200">
+                solohayunocr@gmail.com
               </a>
             </p>
             <p>
               <span class="block">Teléfono:</span>
-              <a href="tel:+123456789" class="hover:text-white transition-colors duration-200">
-                +1 (234) 567-89
+              <a href="tel:+50685812895" class="hover:text-white transition-colors duration-200">
+                +506 8581 2895
               </a>
             </p>
             <p>
               <span class="block">Dirección:</span>
-              123 Calle Principal, Ciudad, País
+              Nicoya, Guanacaste, Costa Rica
             </p>
           </div>
         </div>

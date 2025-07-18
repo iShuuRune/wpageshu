@@ -29,12 +29,6 @@ const teamMembers = [
     position: 'Teclado y Voz',
     description: 'Kelly enriquece cada canción con sus melodías al teclado y su voz angelical, aportando armonías y texturas musicales que elevan la adoración.',
     image: 'shu_kelly.jpg'
-  },
-  {
-    name: 'Isra',
-    position: 'Guitarra Acústica',
-    description: 'Isra toca la guitarra acústica con una sensibilidad especial, creando atmósferas íntimas y acompañamientos perfectos que complementan cada momento musical.',
-    image: 'shu_isra.jpg'
   }
 ]
 </script>

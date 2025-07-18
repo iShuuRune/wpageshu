@@ -1,0 +1,12 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo cuadrado transparente -->
+  <rect width="32" height="32" fill="transparent"/>
+  
+  <!-- Contenedor para centrar el logo -->
+  <g transform="translate(2, 8)">
+    <!-- Aquí iría una versión simplificada del logo SHU -->
+    <!-- Como no tengo acceso al contenido exacto del PNG, creo una versión simple -->
+    <rect x="0" y="0" width="28" height="16" rx="2" fill="#3B82F6"/>
+    <text x="14" y="10" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="8" font-weight="bold">SHU</text>
+  </g>
+</svg>

@@ -32,12 +32,19 @@ const upcomingEvents = [
 ]
 
 const formatDate = (dateString: string) => {
-  return new Date(dateString).toLocaleDateString('es-ES', {
+  // Crear la fecha agregando 'T00:00:00' para forzar zona horaria local
+  const date = new Date(dateString + 'T00:00:00')
+  return date.toLocaleDateString('es-ES', {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
     day: 'numeric'
   })
+}
+
+const getDateForDisplay = (dateString: string) => {
+  // Función auxiliar para obtener la fecha correcta en zona horaria local
+  return new Date(dateString + 'T00:00:00')
 }
 </script>
 
@@ -61,8 +68,8 @@ const formatDate = (dateString: string) => {
         >
           <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
             <div class="text-white text-center">
-              <div class="text-3xl font-bold">{{ new Date(event.date).getDate() }}</div>
-              <div class="text-sm">{{ new Date(event.date).toLocaleDateString('es-ES', { month: 'short' }) }}</div>
+              <div class="text-3xl font-bold">{{ getDateForDisplay(event.date).getDate() }}</div>
+              <div class="text-sm">{{ getDateForDisplay(event.date).toLocaleDateString('es-ES', { month: 'short' }) }}</div>
             </div>
           </div>
           

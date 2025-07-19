@@ -29,10 +29,11 @@ const onImageError = (event: Event) => {
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-        <div
+        <RouterLink
           v-for="event in upcomingEvents"
           :key="event.id"
-          class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+          :to="`/evento/${event.id}`"
+          class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 block"
         >
           <!-- Imagen del evento -->
           <div class="h-48 bg-gray-200 overflow-hidden relative">
@@ -99,7 +100,7 @@ const onImageError = (event: Event) => {
               </div>
             </div>
           </div>
-        </div>
+        </RouterLink>
       </div>
 
       <div class="text-center">

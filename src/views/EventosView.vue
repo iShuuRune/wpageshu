@@ -112,9 +112,12 @@ const onImageError = (event: Event) => {
               </div>
             </div>
 
-            <button class="btn btn-primary w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg">
+            <RouterLink 
+              :to="`/evento/${event.id}`"
+              class="btn btn-primary w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg inline-block text-center"
+            >
               Más Información
-            </button>
+            </RouterLink>
           </div>
         </div>
       </div>
@@ -190,9 +193,12 @@ const onImageError = (event: Event) => {
               </div>
             </div>
 
-            <button class="btn btn-outline btn-sm w-full border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white">
+            <RouterLink 
+              :to="`/evento/${event.id}`"
+              class="btn btn-outline btn-sm w-full border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white inline-block text-center"
+            >
               Ver Detalles
-            </button>
+            </RouterLink>
           </div>
         </div>
       </div>

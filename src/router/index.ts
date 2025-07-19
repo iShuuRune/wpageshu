@@ -22,6 +22,11 @@ const router = createRouter({
           component: () => import('@/views/EventosView.vue'),
         },
         {
+          path: '/evento/:id',
+          name: 'evento-detalle',
+          component: () => import('@/views/EventDetailView.vue'),
+        },
+        {
           path: '/blog',
           name: 'blog',
           component: () => import('@/views/BlogView.vue'),

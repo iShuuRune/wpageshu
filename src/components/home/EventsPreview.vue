@@ -7,8 +7,12 @@ const { upcomingEvents, formatDate, getDateForDisplay } = useEvents()
 const onImageError = (event: Event) => {
   const img = event.target as HTMLImageElement
   console.log('Error cargando imagen:', img.src)
-  // Ocultar la imagen si hay error
+  // Ocultar la imagen si hay error y agregar clase para mostrar fallback
   img.style.display = 'none'
+  const container = img.parentElement
+  if (container) {
+    container.setAttribute('data-image-error', 'true')
+  }
 }
 </script>
 
@@ -40,10 +44,19 @@ const onImageError = (event: Event) => {
               loading="lazy"
               @error="onImageError"
             />
-            <!-- Fallback si no hay imagen o error al cargar -->
+            <!-- Fallback si no hay imagen -->
             <div 
-              v-else
+              v-if="!event.image"
               class="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center"
+            >
+              <div class="text-white text-center">
+                <div class="text-3xl font-bold">{{ getDateForDisplay(event.date).getDate() }}</div>
+                <div class="text-sm">{{ getDateForDisplay(event.date).toLocaleDateString('es-ES', { month: 'short' }) }}</div>
+              </div>
+            </div>
+            <!-- Fallback para error de imagen - CSS controlado -->
+            <div 
+              class="fallback-on-error w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center absolute top-0 left-0 opacity-0 transition-opacity duration-300"
             >
               <div class="text-white text-center">
                 <div class="text-3xl font-bold">{{ getDateForDisplay(event.date).getDate() }}</div>
@@ -100,3 +113,10 @@ const onImageError = (event: Event) => {
     </div>
   </section>
 </template>
+
+<style scoped>
+/* Mostrar fallback cuando hay error de imagen */
+[data-image-error="true"] .fallback-on-error {
+  opacity: 1;
+}
+</style>

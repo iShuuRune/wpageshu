@@ -12,8 +12,12 @@ const {
 const onImageError = (event: Event) => {
   const img = event.target as HTMLImageElement
   console.log('Error cargando imagen:', img.src)
-  // Ocultar la imagen si hay error
+  // Ocultar la imagen si hay error y agregar clase para mostrar fallback
   img.style.display = 'none'
+  const container = img.parentElement
+  if (container) {
+    container.setAttribute('data-image-error', 'true')
+  }
 }
 </script>
 
@@ -52,8 +56,17 @@ const onImageError = (event: Event) => {
             />
             <!-- Fallback si no hay imagen -->
             <div 
-              v-else
+              v-if="!event.image"
               class="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center"
+            >
+              <div class="text-white text-center">
+                <div class="text-4xl font-bold mb-2">{{ getDateForDisplay(event.date).getDate() }}</div>
+                <div class="text-lg">{{ getDateForDisplay(event.date).toLocaleDateString('es-ES', { month: 'long' }) }}</div>
+              </div>
+            </div>
+            <!-- Fallback para error de imagen - CSS controlado -->
+            <div 
+              class="fallback-on-error w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center absolute top-0 left-0 opacity-0 transition-opacity duration-300"
             >
               <div class="text-white text-center">
                 <div class="text-4xl font-bold mb-2">{{ getDateForDisplay(event.date).getDate() }}</div>
@@ -128,8 +141,17 @@ const onImageError = (event: Event) => {
             />
             <!-- Fallback si no hay imagen -->
             <div 
-              v-else
+              v-if="!event.image"
               class="w-full h-full bg-gradient-to-r from-gray-400 to-gray-600 flex items-center justify-center"
+            >
+              <div class="text-white text-center">
+                <div class="text-2xl font-bold">{{ getDateForDisplay(event.date).getDate() }}</div>
+                <div class="text-sm">{{ getDateForDisplay(event.date).toLocaleDateString('es-ES', { month: 'short' }) }}</div>
+              </div>
+            </div>
+            <!-- Fallback para error de imagen - CSS controlado -->
+            <div 
+              class="fallback-on-error w-full h-full bg-gradient-to-r from-gray-400 to-gray-600 flex items-center justify-center absolute top-0 left-0 opacity-0 transition-opacity duration-300"
             >
               <div class="text-white text-center">
                 <div class="text-2xl font-bold">{{ getDateForDisplay(event.date).getDate() }}</div>
@@ -185,5 +207,10 @@ const onImageError = (event: Event) => {
   line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+/* Mostrar fallback cuando hay error de imagen */
+[data-image-error="true"] .fallback-on-error {
+  opacity: 1;
 }
 </style>

@@ -25,7 +25,7 @@ import BlogPreview from '@/components/home/BlogPreview.vue'
         
         <div class="max-w-4xl mx-auto">
           <YouTubeVideo 
-            video-id="Q7acWLojc4c"
+            video-id="kT-2jt-A2mk"
             title="Solo Hay UNO - Nuestra Historia"
             description="Un vistazo a nuestra comunidad de fe y cómo Dios nos ha bendecido."
           />

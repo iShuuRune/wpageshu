@@ -28,7 +28,7 @@ import JoinUsSection from '@/components/about/JoinUsSection.vue'
         
         <div class="max-w-4xl mx-auto">
           <YouTubeVideo 
-            video-id="Q7acWLojc4c"
+            video-id="kT-2jt-A2mk"
             title="Testimonios de Nuestra Comunidad"
             description="Historias reales de transformación y esperanza en Solo Hay UNO."
           />

@@ -17,8 +17,8 @@ const submitForm = async () => {
   // Simular envío del formulario
   await new Promise(resolve => setTimeout(resolve, 1000))
   
-  // Aquí iría la lógica real de envío
-  console.log('Formulario enviado:', form.value)
+  // TODO: Implementar envío real del formulario
+  // En producción, aquí iría la llamada a la API
   
   // Resetear formulario
   form.value = {
@@ -30,6 +30,9 @@ const submitForm = async () => {
   }
   
   isSubmitting.value = false
+  
+  // Mostrar confirmación al usuario
+  // En el futuro, reemplazar con un toast notification más elegante
   alert('¡Mensaje enviado correctamente! Te contactaremos pronto.')
 }
 

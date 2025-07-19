@@ -49,7 +49,7 @@ const getDateForDisplay = (dateString: string) => {
 </script>
 
 <template>
-  <section class="py-16 bg-gray-50">
+  <section id="eventos-preview" class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="text-center mb-12">
         <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">

@@ -1,5 +1,15 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+
+const scrollToNextSection = () => {
+  const nextSection = document.getElementById('eventos-preview')
+  if (nextSection) {
+    nextSection.scrollIntoView({ 
+      behavior: 'smooth',
+      block: 'start'
+    })
+  }
+}
 </script>
 
 <template>
@@ -34,11 +44,15 @@ import { RouterLink } from 'vue-router'
     </div>
 
     <!-- Indicador de scroll -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+    <button 
+      @click="scrollToNextSection"
+      class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce hover:scale-110 transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 rounded-full p-2"
+      aria-label="Desplazarse a la siguiente sección"
+    >
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
       </svg>
-    </div>
+    </button>
   </section>
 </template>
 

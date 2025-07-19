@@ -8,6 +8,13 @@ const {
   getDateForDisplay, 
   getEventTypeColor 
 } = useEvents()
+
+const onImageError = (event: Event) => {
+  const img = event.target as HTMLImageElement
+  console.log('Error cargando imagen:', img.src)
+  // Ocultar la imagen si hay error
+  img.style.display = 'none'
+}
 </script>
 
 <template>
@@ -33,10 +40,31 @@ const {
           :key="event.id"
           class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
         >
-          <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center relative">
-            <div class="text-white text-center">
-              <div class="text-4xl font-bold mb-2">{{ getDateForDisplay(event.date).getDate() }}</div>
-              <div class="text-lg">{{ getDateForDisplay(event.date).toLocaleDateString('es-ES', { month: 'long' }) }}</div>
+          <!-- Imagen del evento -->
+          <div class="h-48 bg-gray-200 overflow-hidden relative">
+            <img 
+              v-if="event.image"
+              :src="event.image" 
+              :alt="event.title"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              @error="onImageError"
+            />
+            <!-- Fallback si no hay imagen -->
+            <div 
+              v-else
+              class="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center"
+            >
+              <div class="text-white text-center">
+                <div class="text-4xl font-bold mb-2">{{ getDateForDisplay(event.date).getDate() }}</div>
+                <div class="text-lg">{{ getDateForDisplay(event.date).toLocaleDateString('es-ES', { month: 'long' }) }}</div>
+              </div>
+            </div>
+            
+            <!-- Overlay con fecha y tipo -->
+            <div class="absolute top-4 left-4 bg-black bg-opacity-70 text-white px-3 py-2 rounded-lg">
+              <div class="text-lg font-bold">{{ getDateForDisplay(event.date).getDate() }}</div>
+              <div class="text-xs">{{ getDateForDisplay(event.date).toLocaleDateString('es-ES', { month: 'short' }) }}</div>
             </div>
             <span :class="`absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-medium text-white ${getEventTypeColor(event.type)}`">
               {{ event.type }}
@@ -88,10 +116,31 @@ const {
           :key="event.id"
           class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
         >
-          <div class="h-32 bg-gradient-to-r from-gray-400 to-gray-600 flex items-center justify-center relative">
-            <div class="text-white text-center">
-              <div class="text-2xl font-bold">{{ getDateForDisplay(event.date).getDate() }}</div>
-              <div class="text-sm">{{ getDateForDisplay(event.date).toLocaleDateString('es-ES', { month: 'short' }) }}</div>
+          <!-- Imagen del evento - versión compacta -->
+          <div class="h-32 bg-gray-200 overflow-hidden relative">
+            <img 
+              v-if="event.image"
+              :src="event.image" 
+              :alt="event.title"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              @error="onImageError"
+            />
+            <!-- Fallback si no hay imagen -->
+            <div 
+              v-else
+              class="w-full h-full bg-gradient-to-r from-gray-400 to-gray-600 flex items-center justify-center"
+            >
+              <div class="text-white text-center">
+                <div class="text-2xl font-bold">{{ getDateForDisplay(event.date).getDate() }}</div>
+                <div class="text-sm">{{ getDateForDisplay(event.date).toLocaleDateString('es-ES', { month: 'short' }) }}</div>
+              </div>
+            </div>
+            
+            <!-- Overlay con fecha y tipo -->
+            <div class="absolute top-2 left-2 bg-black bg-opacity-70 text-white px-2 py-1 rounded text-xs">
+              <div class="font-bold">{{ getDateForDisplay(event.date).getDate() }}</div>
+              <div class="text-xs">{{ getDateForDisplay(event.date).toLocaleDateString('es-ES', { month: 'short' }) }}</div>
             </div>
             <span :class="`absolute top-2 right-2 px-2 py-1 rounded-full text-xs font-medium text-white ${getEventTypeColor(event.type)}`">
               {{ event.type }}

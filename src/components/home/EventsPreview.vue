@@ -3,6 +3,13 @@ import { RouterLink } from 'vue-router'
 import { useEvents } from '@/composables/useEvents'
 
 const { upcomingEvents, formatDate, getDateForDisplay } = useEvents()
+
+const onImageError = (event: Event) => {
+  const img = event.target as HTMLImageElement
+  console.log('Error cargando imagen:', img.src)
+  // Ocultar la imagen si hay error
+  img.style.display = 'none'
+}
 </script>
 
 <template>
@@ -23,10 +30,31 @@ const { upcomingEvents, formatDate, getDateForDisplay } = useEvents()
           :key="event.id"
           class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
         >
-          <div class="h-48 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-            <div class="text-white text-center">
-              <div class="text-3xl font-bold">{{ getDateForDisplay(event.date).getDate() }}</div>
-              <div class="text-sm">{{ getDateForDisplay(event.date).toLocaleDateString('es-ES', { month: 'short' }) }}</div>
+          <!-- Imagen del evento -->
+          <div class="h-48 bg-gray-200 overflow-hidden relative">
+            <img 
+              v-if="event.image"
+              :src="event.image" 
+              :alt="event.title"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              @error="onImageError"
+            />
+            <!-- Fallback si no hay imagen o error al cargar -->
+            <div 
+              v-else
+              class="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center"
+            >
+              <div class="text-white text-center">
+                <div class="text-3xl font-bold">{{ getDateForDisplay(event.date).getDate() }}</div>
+                <div class="text-sm">{{ getDateForDisplay(event.date).toLocaleDateString('es-ES', { month: 'short' }) }}</div>
+              </div>
+            </div>
+            
+            <!-- Overlay con fecha -->
+            <div class="absolute top-4 left-4 bg-black bg-opacity-70 text-white px-3 py-2 rounded-lg">
+              <div class="text-lg font-bold">{{ getDateForDisplay(event.date).getDate() }}</div>
+              <div class="text-xs">{{ getDateForDisplay(event.date).toLocaleDateString('es-ES', { month: 'short' }) }}</div>
             </div>
           </div>
           

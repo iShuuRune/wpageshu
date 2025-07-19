@@ -23,7 +23,7 @@ const events = ref<Event[]>([
     description: 'Celebramos un año más de la Red Conexión con una noche especial. Únete a nosotros para conmemorar este momento tan importante.',
     type: 'Aniversario',
     featured: true,
-    image: '/api/placeholder/400/250'
+    image: 'https://lh3.googleusercontent.com/d/1vnxQBu2F3UHW2d0TgpEJ4zcLNc8vZsFG'
   },
   {
     id: 2,
@@ -34,7 +34,7 @@ const events = ref<Event[]>([
     description: 'Una noche inolvidable con René González, uno de los exponentes más reconocidos de la música cristiana.',
     type: 'Concierto',
     featured: true,
-    image: '/api/placeholder/400/250'
+    image: 'https://lh3.googleusercontent.com/d/1vnxQBu2F3UHW2d0TgpEJ4zcLNc8vZsFG'
   },
   {
     id: 3,
@@ -45,7 +45,7 @@ const events = ref<Event[]>([
     description: 'Un encuentro especial dedicado a la música cristiana con talleres, conferencias y momentos de adoración. Ideal para músicos y amantes de la música.',
     type: 'Congreso',
     featured: false,
-    image: '/api/placeholder/400/250'
+    image: 'https://lh3.googleusercontent.com/d/1vnxQBu2F3UHW2d0TgpEJ4zcLNc8vZsFG'
   },
   {
     id: 4,
@@ -56,7 +56,7 @@ const events = ref<Event[]>([
     description: 'Alex Zurdo llega a Costa Rica con su música llena de energía y mensaje. Una tarde que no te puedes perder con uno de los artistas más queridos del género urbano cristiano.',
     type: 'Concierto',
     featured: true,
-    image: '/api/placeholder/400/250'
+    image: 'https://lh3.googleusercontent.com/d/1vnxQBu2F3UHW2d0TgpEJ4zcLNc8vZsFG'
   },
   {
     id: 5,
@@ -67,7 +67,7 @@ const events = ref<Event[]>([
     description: 'Tres días de campamento zonal del 19 al 21 de diciembre. Salida viernes 5:00 PM, regreso domingo 6:00 PM. Una experiencia de crecimiento espiritual en la naturaleza.',
     type: 'Campamento',
     featured: false,
-    image: '/api/placeholder/400/250'
+    image: 'https://lh3.googleusercontent.com/d/1vnxQBu2F3UHW2d0TgpEJ4zcLNc8vZsFG'
   }
 ])
 

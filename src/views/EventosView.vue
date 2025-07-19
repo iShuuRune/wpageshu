@@ -18,7 +18,7 @@ const events = ref([
     date: '2025-08-27',
     time: '6:30 PM',
     location: 'Sala Magna del Liceo de Santa Cruz',
-    description: 'Una noche inolvidable con René González, uno de los exponentes más reconocidos de la música cristiana. Prepárate para una experiencia de adoración única.',
+    description: 'Una noche inolvidable con René González, uno de los exponentes más reconocidos de la música cristiana.',
     type: 'Concierto',
     featured: true
   },

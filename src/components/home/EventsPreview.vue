@@ -1,51 +1,8 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import { useEvents } from '@/composables/useEvents'
 
-const upcomingEvents = [
-  {
-    id: 1,
-    title: 'Aniversario Red Conexión',
-    date: '2025-07-26',
-    time: '7:00 PM',
-    location: 'Iglesia PDP Sede Pueblo Viejo',
-    description: 'Celebramos un año más de la Red Conexión con una noche especial. Únete a nosotros para conmemorar este momento tan importante.',
-    image: '/api/placeholder/400/250'
-  },
-  {
-    id: 2,
-    title: 'Concierto René González',
-    date: '2025-08-27',
-    time: '6:30 PM',
-    location: 'Sala Magna del Liceo de Santa Cruz',
-    description: 'Una noche inolvidable con René González, uno de los exponentes más reconocidos de la música cristiana.',
-    image: '/api/placeholder/400/250'
-  },
-  {
-    id: 3,
-    title: 'Congreso de Música',
-    date: '2025-11-15',
-    time: '10:00 AM',
-    location: 'Iglesia Central PDP San Joaquín',
-    description: 'Un encuentro especial dedicado a la música cristiana con talleres, conferencias y momentos de adoración. Ideal para músicos y amantes de la música.',
-    image: '/api/placeholder/400/250'
-  }
-]
-
-const formatDate = (dateString: string) => {
-  // Crear la fecha agregando 'T00:00:00' para forzar zona horaria local
-  const date = new Date(dateString + 'T00:00:00')
-  return date.toLocaleDateString('es-ES', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
-}
-
-const getDateForDisplay = (dateString: string) => {
-  // Función auxiliar para obtener la fecha correcta en zona horaria local
-  return new Date(dateString + 'T00:00:00')
-}
+const { upcomingEvents, formatDate, getDateForDisplay } = useEvents()
 </script>
 
 <template>

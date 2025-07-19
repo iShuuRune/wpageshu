@@ -1,84 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { useEvents } from '@/composables/useEvents'
 
-const events = ref([
-  {
-    id: 1,
-    title: 'Aniversario Red Conexión',
-    date: '2025-07-26',
-    time: '7:00 PM',
-    location: 'Iglesia PDP Sede Pueblo Viejo',
-    description: 'Celebramos un año más de la Red Conexión con una noche especial. Únete a nosotros para conmemorar este momento tan importante.',
-    type: 'Aniversario',
-    featured: true
-  },
-  {
-    id: 2,
-    title: 'Concierto René González',
-    date: '2025-08-27',
-    time: '6:30 PM',
-    location: 'Sala Magna del Liceo de Santa Cruz',
-    description: 'Una noche inolvidable con René González, uno de los exponentes más reconocidos de la música cristiana.',
-    type: 'Concierto',
-    featured: true
-  },
-  {
-    id: 3,
-    title: 'Congreso de Música',
-    date: '2025-11-15',
-    time: '10:00 AM',
-    location: 'Iglesia Central PDP San Joaquín',
-    description: 'Un encuentro especial dedicado a la música cristiana con talleres, conferencias y momentos de adoración. Ideal para músicos y amantes de la música.',
-    type: 'Congreso',
-    featured: false
-  },
-  {
-    id: 4,
-    title: 'Concierto Alex Zurdo',
-    date: '2025-12-07',
-    time: '3:00 PM',
-    location: 'Polideportivo de Nicoya',
-    description: 'Alex Zurdo llega a Costa Rica con su música llena de energía y mensaje. Una tarde que no te puedes perder con uno de los artistas más queridos del género urbano cristiano.',
-    type: 'Concierto',
-    featured: true
-  },
-  {
-    id: 5,
-    title: 'Campamento Zonal Río Naranjo 2025',
-    date: '2025-12-19',
-    time: '5:00 PM',
-    location: 'Río Naranjo de Upala',
-    description: 'Tres días de campamento zonal del 19 al 21 de diciembre. Salida viernes 5:00 PM, regreso domingo 6:00 PM. Una experiencia de crecimiento espiritual en la naturaleza.',
-    type: 'Campamento',
-    featured: false
-  }
-])
-
-const formatDate = (dateString: string) => {
-  // Crear la fecha agregando 'T00:00:00' para forzar zona horaria local
-  const date = new Date(dateString + 'T00:00:00')
-  return date.toLocaleDateString('es-ES', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
-}
-
-const getDateForDisplay = (dateString: string) => {
-  // Función auxiliar para obtener la fecha correcta en zona horaria local
-  return new Date(dateString + 'T00:00:00')
-}
-
-const getEventTypeColor = (type: string) => {
-  const colors = {
-    'Aniversario': 'bg-purple-500',
-    'Concierto': 'bg-red-500',
-    'Congreso': 'bg-blue-500',
-    'Campamento': 'bg-green-500'
-  }
-  return colors[type as keyof typeof colors] || 'bg-gray-500'
-}
+const { 
+  allEvents: events, 
+  featuredEvents,
+  formatDate, 
+  getDateForDisplay, 
+  getEventTypeColor 
+} = useEvents()
 </script>
 
 <template>
@@ -100,7 +29,7 @@ const getEventTypeColor = (type: string) => {
       <h2 class="text-3xl font-bold text-gray-800 mb-8">Eventos Destacados</h2>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div
-          v-for="event in events.filter(e => e.featured)"
+          v-for="event in featuredEvents"
           :key="event.id"
           class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
         >

@@ -54,7 +54,7 @@ const closeImageModal = () => {
 <template>
   <div v-if="event" class="min-h-screen bg-gray-50">
     <!-- Hero Section con Imagen -->
-    <section class="relative h-96 md:h-[500px] overflow-hidden">
+    <section class="relative h-96 md:h-84 overflow-hidden">
       <!-- Imagen de fondo -->
       <div class="absolute inset-0">
         <img 

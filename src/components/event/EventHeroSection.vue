@@ -1,40 +1,26 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useRouter } from 'vue-router'
 import type { Event } from '@/composables/useEvents'
 
 interface Props {
   event: Event
   formatDate: (dateString: string) => string
-  getDateForDisplay: (dateString: string) => Date
   getEventTypeColor: (type: string) => string
 }
 
-const props = defineProps<Props>()
-const router = useRouter()
+defineProps<Props>()
 
-const onImageError = (domEvent: globalThis.Event) => {
-  const img = domEvent.target as HTMLImageElement
-  console.log('Error cargando imagen:', img.src)
-  img.style.display = 'none'
-  const container = img.parentElement
-  if (container) {
-    container.setAttribute('data-image-error', 'true')
-  }
-}
+const emit = defineEmits<{
+  goBack: []
+}>()
 </script>
 
 <template>
-  <!-- Hero Section con Imagen -->
-  <section class="relative h-56 md:h-72 overflow-hidden">
-    <!-- Imagen de fondo -->
-    <div class="absolute inset-0 z-0 bg-gradient-to-br from-blue-500 to-purple-600"></div>
-    
-    <!-- Overlay oscuro -->
-    <div class="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+  <section class="relative h-78 md:h-78 overflow-hidden bg-black">
+    <!-- Fondo negro sólido -->
+    <div class="absolute inset-0 bg-black"></div>
     
     <!-- Contenido del hero -->
-    <div class="relative z-20 container mx-auto px-4 h-full flex items-end pb-8">
+    <div class="relative z-10 container mx-auto px-4 h-full flex items-end pb-8">
       <div class="text-white">
         <span :class="`inline-block px-4 py-2 rounded-full text-sm font-medium mb-4 ${getEventTypeColor(event.type)}`">
           {{ event.type }}
@@ -59,8 +45,8 @@ const onImageError = (domEvent: globalThis.Event) => {
 
     <!-- Botón de volver -->
     <button 
-      @click="router.back()"
-      class="absolute top-6 left-6 z-30 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-3 rounded-full transition-all duration-300"
+      @click="emit('goBack')"
+      class="absolute top-6 left-6 z-20 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-3 rounded-full transition-all duration-300"
     >
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -68,10 +54,3 @@ const onImageError = (domEvent: globalThis.Event) => {
     </button>
   </section>
 </template>
-
-<style scoped>
-/* Mostrar fallback cuando hay error de imagen */
-[data-image-error="true"] .fallback-on-error {
-  opacity: 1;
-}
-</style>
